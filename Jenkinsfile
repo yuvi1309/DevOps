@@ -10,23 +10,23 @@ pipeline {
     }
 
     environment {
-        GIT_REPO = 'https://github.com/yuvi1309/Devops_assessment.git'
+        GIT_REPO = 'https://github.com/yuvi1309/DevOps.git'
         DEVELOPERS_EMAIL = 'athiyuva2513@gmail.com'
-        BRANCH_NAME = 'master' 
+        BRANCH_NAME = 'main' 
     }
  
     stages {
         stage('Checkout') {
             steps {
                 //git branch: "${BRANCH_NAME}", url: "${GIT_REPO}"
-                bat 'git clone https://github.com/yuvi1309/Devops_assessment.git'
+                bat 'git clone https://github.com/yuvi1309/DevOps.git'
             }
         }
  
         stage('Build') {
             steps {
                 //bat 'cd exercise-bt-conditionalstatements-ifelse'
-                dir('C://ProgramData//Jenkins//.jenkins//workspace//jenkins_multibranch_master//exercise-bt-conditionalstatements-ifelse'){
+                dir('C://ProgramData//Jenkins//.jenkins//workspace//jenkins_multibranch_main//exercise-bt-conditionalstatements-ifelse'){
                 bat 'mvn -B -DskipTests clean package'
                 }
             }
@@ -34,7 +34,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                dir('C://ProgramData//Jenkins//.jenkins//workspace//jenkins_multibranch_master//exercise-bt-conditionalstatements-ifelse'){
+                dir('C://ProgramData//Jenkins//.jenkins//workspace//jenkins_multibranch_main//exercise-bt-conditionalstatements-ifelse'){
                 bat 'mvn test'}
             }
             
